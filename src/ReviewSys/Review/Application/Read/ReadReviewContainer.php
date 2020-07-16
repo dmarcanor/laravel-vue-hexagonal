@@ -1,0 +1,21 @@
+<?php
+
+namespace Practice\ReviewSys\Review\Application\Read;
+
+use Practice\ReviewSys\Shared\Container\Container;
+use Illuminate\Container\Container as IoC;
+
+final class ReadReviewContainer implements Container
+{
+    private $container;
+
+    public function __construct(IoC $container)
+    {
+        $this->container = $container;
+    }
+
+    public function make($class)
+    {
+        return $this->container->make($class);
+    }
+}
