@@ -17,6 +17,10 @@ final class ReadReviewCommandHandler implements CommandHandler
 
     public function __invoke(ReadReviewCommand $command)
     {
+        $reviewId       = $command->id();
+        $reviewName     = $command->name();
+        $reviewPoints   = $command->points();
+
         return $this->reader->__invoke($command->id(), $command->name(), $command->points());
     }
 }

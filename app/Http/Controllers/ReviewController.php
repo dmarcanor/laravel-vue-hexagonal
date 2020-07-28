@@ -51,7 +51,7 @@ class ReviewController extends Controller
             $request->input('points')
         );
 
-        $response = $this->commandBus->execute($command);
+        $this->commandBus->execute($command);
 
         return response()->json(['result' => 'La reseña se actualizó satisfactoriamente']);
     }
@@ -62,7 +62,7 @@ class ReviewController extends Controller
             $request->input('id')
         );
 
-        $response = $this->commandBus->execute($command);
+        $this->commandBus->execute($command);
 
         return response()->json(['result' => 'La reseña se eliminó satisfactoriamente']);
     }
