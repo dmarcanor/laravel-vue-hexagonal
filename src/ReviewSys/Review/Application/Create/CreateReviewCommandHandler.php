@@ -1,7 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Practice\ReviewSys\Review\Application\Create;
 
+use Practice\ReviewSys\Review\Domain\ReviewName;
+use Practice\ReviewSys\Review\Domain\ReviewPoints;
 use Practice\ReviewSys\Shared\Command\CommandHandler;
 
 final class CreateReviewCommandHandler implements CommandHandler
@@ -15,6 +19,9 @@ final class CreateReviewCommandHandler implements CommandHandler
 
     public function __invoke(CreateReviewCommand $command)
     {
-        $this->creator->__invoke($command->name(), $command->points());
+        $reviewName   = new ReviewName($command->name());
+        $reviewPoints = new ReviewPoints($command->points());
+
+        $this->creator->__invoke($reviewName, $reviewPoints);
     }
 }

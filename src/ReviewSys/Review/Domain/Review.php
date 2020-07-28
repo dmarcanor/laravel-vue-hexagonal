@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Practice\ReviewSys\Review\Domain;
 
 final class Review
@@ -8,24 +10,29 @@ final class Review
     private $name;
     private $points;
 
-    public function __construct(?int $id, string $name, int $points)
+    public function __construct(?ReviewId $id, ReviewName $name, ReviewPoints $points)
     {
         $this->id       = $id;
         $this->name     = $name;
         $this->points   = $points;
     }
 
-    public function id(): ?int
+    private function upperCaseName(): string
+    {
+        return ucwords($this->name->value());
+    }
+
+    public function id(): ?ReviewId
     {
         return $this->id;
     }
 
-    public function name(): string
+    public function name(): ReviewName
     {
-        return ucwords($this->name);
+        return $this->name;
     }
 
-    public function points(): int
+    public function points(): ReviewPoints
     {
         return $this->points;
     }
@@ -33,8 +40,8 @@ final class Review
     public function toArray(): array
     {
         return $data = [
-            'name'   => $this->name(),
-            'points' => $this->points()
+            'name'   => $this->upperCaseName(),
+            'points' => $this->points()->value()
         ];
     }
 

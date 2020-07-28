@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Practice\ReviewSys\Review\Application\Delete;
 
 use Practice\ReviewSys\Shared\Command\Command;

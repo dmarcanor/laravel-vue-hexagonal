@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Practice\ReviewSys\Review\Application\Update;
 
 use Practice\ReviewSys\Review\Domain\Review;
