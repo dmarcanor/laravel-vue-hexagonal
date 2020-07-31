@@ -6,5 +6,5 @@ namespace Practice\ReviewSys\Shared\Queries;
 
 interface QueryBus
 {
-    public function ask();
+    public function execute($query);
 }

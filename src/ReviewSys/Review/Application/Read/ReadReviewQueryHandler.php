@@ -17,7 +17,7 @@ class ReadReviewQueryHandler implements QueryHandler
 
     public function __invoke(ReadReviewQuery $query)
     {
-             
+
     }
 
 }

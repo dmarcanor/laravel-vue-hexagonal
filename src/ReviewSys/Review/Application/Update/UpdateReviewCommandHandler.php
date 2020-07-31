@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Practice\ReviewSys\Review\Application\Update;
 
+use Practice\ReviewSys\Review\Domain\ReviewId;
+use Practice\ReviewSys\Review\Domain\ReviewName;
+use Practice\ReviewSys\Review\Domain\ReviewPoints;
 use Practice\ReviewSys\Shared\Command\CommandHandler;
 
 final class UpdateReviewCommandHandler implements CommandHandler
@@ -17,6 +20,9 @@ final class UpdateReviewCommandHandler implements CommandHandler
 
     public function __invoke(UpdateReviewCommand $command)
     {
-        return $this->updater->__invoke($command->id(), $command->name(), $command->points());
+        $reviewId       = new ReviewId($command->id());
+        $reviewName     = new ReviewName($command->name());
+        $reviewPoints   = new ReviewPoints($command->points());
+        return $this->updater->__invoke($reviewId, $reviewName, $reviewPoints);
     }
 }

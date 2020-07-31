@@ -17,15 +17,15 @@ final class ReviewEloquentRepository implements ReviewRepository
 
     public function update($review)
     {
-        Model::find($review->id())->update([
-            'name' => $review->name(),
-            'points' => $review->points()
+        Model::find($review->id()->value())->update([
+            'name' => $review->name()->value(),
+            'points' => $review->points()->value()
         ]);
     }
 
     public function delete($id)
     {
-        Model::find($id)->delete();
+        Model::find($id->value())->delete();
     }
 
     public function all()
