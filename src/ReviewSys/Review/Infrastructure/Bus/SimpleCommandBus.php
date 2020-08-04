@@ -10,10 +10,6 @@ use Practice\ReviewSys\Shared\Command\Command;
 
 final class SimpleCommandBus implements CommandBus
 {
-
-    private const COMMAND_PREFIX = 'Command';
-    private const HANDLER_PREFIX = 'Handler';
-
     private $container;
 
     public function __construct(Container $container)

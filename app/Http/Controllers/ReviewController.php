@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Practice\ReviewSys\Review\Application\Create\CreateReviewCommand;
 use Practice\ReviewSys\Review\Application\Delete\DeleteReviewCommand;
-use Practice\ReviewSys\Review\Application\Read\ReadReviewCommand;
 use Practice\ReviewSys\Review\Application\Search\SearchReviewQuery;
 use Practice\ReviewSys\Review\Application\Update\UpdateReviewCommand;
 use Practice\ReviewSys\Shared\Command\CommandBus;
@@ -36,13 +35,13 @@ class ReviewController extends Controller
 
     public function list(?Request $request)
     {
-        $command = new SearchReviewQuery(
+        $query = new SearchReviewQuery(
             $request->input('id'),
             $request->input('name'),
             $request->input('points')
         );
 
-        $response = $this->queryBus->execute($command);
+        $response = $this->queryBus->ask($query);
 
         return response()->json(['resenias' => $response]);
     }

@@ -10,10 +10,6 @@ use Practice\ReviewSys\Shared\Queries\QueryBus;
 
 final class SimpleQueryBus implements QueryBus
 {
-
-    private const COMMAND_PREFIX = 'Command';
-    private const HANDLER_PREFIX = 'Handler';
-
     private $container;
 
     public function __construct(Container $container)
@@ -21,7 +17,7 @@ final class SimpleQueryBus implements QueryBus
         $this->container = $container;
     }
 
-    public function execute($query)
+    public function ask($query)
     {
         return $this->resolveHandler($query)->__invoke($query);
     }
