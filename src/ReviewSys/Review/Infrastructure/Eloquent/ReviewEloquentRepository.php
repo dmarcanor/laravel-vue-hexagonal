@@ -31,16 +31,8 @@ final class ReviewEloquentRepository implements ReviewRepository
 
     public function search(Criteria $criteria)
     {
-        $model = new Model();
-        $collection = '';
-
-        foreach ($criteria->filters()->collection() AS $filter => $value) {
-            if (method_exists($model, $filter)) {
-                $collection = $model->$filter($value);
-            }
-        }
-
-        return $collection->get();
+        return Model::filters($criteria->filters()->collection())
+            ->get();
     }
 
     public function all()

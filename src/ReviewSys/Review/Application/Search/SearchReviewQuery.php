@@ -26,7 +26,7 @@ final class SearchReviewQuery implements Query
         return array(
             'id'    => $this->id,
             'name'  => $this->name,
-            'poimts'=> $this->points
+            'points'=> $this->points
         );
     }
 

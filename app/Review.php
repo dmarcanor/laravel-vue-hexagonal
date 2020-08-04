@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
+use Practice\ReviewSys\Review\Infrastructure\Filters\ReviewFilters;
 
 class Review extends Model
 {
@@ -12,18 +12,11 @@ class Review extends Model
         'points'
     ];
 
-    public function id($id)
+    public function scopeFilters($query, $clause)
     {
-        return self::where("id", $id);
+        $filter = new ReviewFilters();
+
+        return $filter->apply($query, $clause);
     }
 
-    public function name($name)
-    {
-        return self::where("name", 'like', '%'.$name.'%');
-    }
-
-    public function points($points)
-    {
-        return self::where("points", $points);
-    }
 }
