@@ -26,6 +26,32 @@
         <div class="title mt-5">
             <div class="row">
                 <div class="col-10">
+                    Búsqueda avanzada
+                </div>
+            </div>
+        </div>
+        <div class="formulario">
+            <form action="" method="get" @submit.prevent="Listar">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="number" name="id" class="form-control" v-model="params.id" placeholder="ID">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" name="name" class="form-control" v-model="params.name" placeholder="Name">
+                    </div>
+                    <div class="col-3">
+                        <input type="number" name="points" class="form-control" v-model="params.points" placeholder="Points">
+                    </div>
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button type="button" class="btn btn-warnir" @click.prevent="Limpiar">Limpiar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="title mt-5">
+            <div class="row">
+                <div class="col-10">
                     Listar reseñas
                 </div>
                 <div class="col-2">
@@ -53,13 +79,21 @@
 </template>
 
 <script>
+
+    import qs from 'qs';
+
     export default {
         data() {
             return {
                 id: '',
                 name: '',
                 points: '',
-                resenias: []
+                resenias: [],
+                params: {
+                    id: '',
+                    name: '',
+                    points: ''
+                }
             }
         },
 
@@ -84,7 +118,7 @@
                 });
             },
             Listar() {
-                axios.get('/list').then((response) => {
+                axios.post('/list', qs.stringify(this.params)).then((response) => {
                     console.log(response.data.resenias);
                     this.resenias = response.data.resenias;
                 });

@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::post('/store', 'ReviewController@store');
 
-Route::get('/list', 'ReviewController@list');
+Route::post('/list', 'ReviewController@list');
 
 Route::post('/update', 'ReviewController@update');
 

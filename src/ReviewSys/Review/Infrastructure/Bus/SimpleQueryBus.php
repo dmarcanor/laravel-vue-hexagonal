@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Practice\ReviewSys\Review\Infrastructure\Bus;
 
 use Practice\ReviewSys\Shared\Container\Container;
-use Practice\ReviewSys\Shared\Command\Command;
+use Practice\ReviewSys\Shared\Queries\Query;
 use Practice\ReviewSys\Shared\Queries\QueryBus;
 
 final class SimpleQueryBus implements QueryBus
@@ -31,8 +31,8 @@ final class SimpleQueryBus implements QueryBus
         return $this->container->make( $this->getHandlerClass($query) );
     }
 
-    private function getHandlerClass(Command $query): string
+    private function getHandlerClass(Query $query): string
     {
-        return get_class($query) . 'Query';
+        return get_class($query) . 'Handler';
     }
 }
