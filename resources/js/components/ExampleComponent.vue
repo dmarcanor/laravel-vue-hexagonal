@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-3">
                         <button type="submit" class="btn btn-primary">Buscar</button>
-                        <button type="button" class="btn btn-warnir" @click.prevent="Limpiar">Limpiar</button>
+                        <button type="button" class="btn btn-warnir" @click.prevent="Limpiar2">Limpiar</button>
                     </div>
                 </div>
             </form>
@@ -141,6 +141,13 @@
             Limpiar() {
                 this.name = '';
                 this.points = '';
+            },
+            Limpiar2() {
+                this.params = {
+                    id: '',
+                    name: '',
+                    points: ''
+                };
             },
         },
     }

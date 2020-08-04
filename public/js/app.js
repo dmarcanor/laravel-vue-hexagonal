@@ -1843,6 +1843,13 @@ __webpack_require__.r(__webpack_exports__);
     Limpiar: function Limpiar() {
       this.name = '';
       this.points = '';
+    },
+    Limpiar2: function Limpiar2() {
+      this.params = {
+        id: '',
+        name: '',
+        points: ''
+      };
     }
   }
 });
@@ -39185,7 +39192,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       $event.preventDefault()
-                      return _vm.Limpiar($event)
+                      return _vm.Limpiar2($event)
                     }
                   }
                 },
