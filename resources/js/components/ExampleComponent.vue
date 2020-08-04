@@ -148,6 +148,8 @@
                     name: '',
                     points: ''
                 };
+
+                this.Listar();
             },
         },
     }
